@@ -1,0 +1,35 @@
+﻿@model MVC_Library.ViewModels.BookViewModel
+
+<h1 class="mt-4">Book List</h1>
+<a class="btn btn-primary mb-3" asp-controller="Book" asp-action="Create">Add New Book</a>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>Publish Date</th>
+            <th>ISBN</th>
+            <th>Copies Available</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model.Books)
+        {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@Model.Authors.FirstOrDefault(a => a.AuthorId == book.AuthorId)?.FullName</td>
+                    <td>@book.Genre</td>
+                    <td>@book.PublishDate.ToShortDateString()</td>
+                    <td>@book.ISBN</td>
+                    <td>@book.CopiesAvailable</td>
+                    <td>
+                        <a class="btn btn-info btn-sm" asp-controller="Book" asp-action="Details" asp-route-id="@book.BookId">Details</a>
+                        <a class="btn btn-warning btn-sm" asp-controller="Book" asp-action="Edit" asp-route-id="@book.BookId">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-controller="Book" asp-action="Delete" asp-route-id="@book.BookId">Delete</a>
+                    </td>
+                </tr>
+        }
+    </tbody>
+</table>

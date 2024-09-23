@@ -1,0 +1,7 @@
+﻿@model MVC_Library.Models.Author
+
+<h1>Author Details</h1>
+<p>First Name: @Model.FirstName</p>
+<p>Last Name: @Model.LastName</p>
+<p>Date of Birth: @Model.DateOfBirth.ToShortDateString()</p>
+<a asp-controller="Author" asp-action="List">Back to List</a>

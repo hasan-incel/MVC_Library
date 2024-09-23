@@ -1,0 +1,10 @@
+﻿@model MVC_Library.Models.Book
+
+<h1>Book Details</h1>
+<p>Title: @Model.Title</p>
+<p>Author ID: @Model.AuthorId</p>
+<p>Genre: @Model.Genre</p>
+<p>Publish Date: @Model.PublishDate.ToShortDateString()</p>
+<p>ISBN: @Model.ISBN</p>
+<p>Copies Available: @Model.CopiesAvailable</p>
+<a asp-controller="Book" asp-action="List">Back to List</a>

@@ -1,0 +1,25 @@
+﻿@model MVC_Library.ViewModels.LoginViewModel
+
+<div class="container mt-5">
+    <h2 class="text-center">Login</h2>
+    @if (!string.IsNullOrWhiteSpace(ViewData["ErrorMessage"]?.ToString()))
+    {
+            <div class="alert alert-danger">@ViewData["ErrorMessage"]</div> <!-- Displaying error message -->
+    }
+    <form asp-action="Login" method="post">
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input asp-for="Email" class="form-control" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" />
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+    <div class="text-center mt-3">
+        <a href="@Url.Action("SignUp", "Auth")">Don't have an account? Sign Up</a>
+    </div>
+</div>
